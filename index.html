@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Input field for adding items -->
+    <form class="input-form">
+      <label for="item-name" class="input-label">Add an item to the list</label>
+      <input required id="item-name" type="text" class="input" />
+      <button type="submit" class="add-btn">Add</button>
+    </form>
+
+    <!-- List container to display items -->
+    <div class="shopping-list-container">
+      <button class="clear-list-btn">Clear List</button>
+      <ul class="shopping-list">
+        <li class="shopping-list-item">
+          Sample Item
+          <button class="mark-purchased">Mark Purchased</button>
+          <button class="mark-unpurchased hidden">Mark Unpurchased</button>
+        </li>
+      </ul>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
