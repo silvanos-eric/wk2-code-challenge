@@ -21,16 +21,6 @@ function removeAllItems() {
 }
 
 /**
- * Toggles the 'purchased' class on the provided item element.
- *
- * @param {Object} item - The item element to toggle the class on.
- * @return {void} No return value.
- */
-function purchaseItem(item) {
-  item.classList.toggle("purchased");
-}
-
-/**
  * Validates the given data by trimming it and checking if it is not empty.
  *
  * @param {string} data - The data to be validated.
