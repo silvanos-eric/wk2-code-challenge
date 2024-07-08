@@ -5,28 +5,69 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Input field for adding items -->
-    <form class="input-form">
-      <label for="item-name" class="input-label">Add an item to the list</label>
-      <input required id="item-name" type="text" class="input" />
-      <button type="submit" class="add-btn">Add</button>
-    </form>
+    <main
+      class="d-flex flex-column h-100 justify-content-center align-items-center gap-3"
+    >
+      <h1 class="text-center">Shopping List</h1>
+      <!-- Input field for adding items -->
+      <form data-script="form">
+        <div class="mb-3">
+          <label for="item-name" class="form-label"
+            >Add an item to the list</label
+          >
+          <input
+            required
+            id="item-name"
+            type="text"
+            class="form-control"
+            data-script="input"
+            placeholder="your item here"
+          />
+          <div class="text-end mt-2">
+            <button type="submit" data-script="add-btn" class="btn btn-primary">
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
 
-    <!-- List container to display items -->
-    <div class="shopping-list-container">
-      <button class="clear-list-btn">Clear List</button>
-      <ul class="shopping-list">
-        <li class="shopping-list-item">
-          Sample Item
-          <button class="mark-purchased">Mark Purchased</button>
-          <button class="mark-unpurchased hidden">Mark Unpurchased</button>
-        </li>
-      </ul>
-    </div>
+      <!-- List container to display items -->
+      <div class="mt-4">
+        <button data-script="clear-list-btn" class="btn btn-danger">
+          Clear List
+        </button>
 
+        <ul data-script="shopping-list" class="list-group mt-2">
+          <li class="list-group-item">
+            Sample Item
+            <button data-script="mark-purchased" class="btn btn-success ms-4">
+              Mark Purchased
+            </button>
+            <button
+              data-script="mark-unpurchased"
+              class="d-none btn btn-secondary ms-4"
+            >
+              Mark Unpurchased
+            </button>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

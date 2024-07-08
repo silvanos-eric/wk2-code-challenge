@@ -35,11 +35,11 @@ function validateData(data) {
 }
 
 // DOM Elements of interest
-const shoppingListEl = document.querySelector(".shopping-list");
-const inputEl = document.querySelector(".input");
-const inputFormEl = document.querySelector(".input-form");
-const addBtnEl = document.querySelector(".add-btn");
-const clearListBtn = document.querySelector(".clear-list-btn");
+const shoppingListEl = document.querySelector('[data-script="shopping-list"]');
+const inputEl = document.querySelector('[data-script="input"]');
+const inputFormEl = document.querySelector('[data-script="form"]');
+const addBtnEl = document.querySelector('[data-script="add-btn"]');
+const clearListBtn = document.querySelector('[data-script="clear-list-btn"]');
 
 // Functionality to clear the shopping list
 clearListBtn.addEventListener("click", (event) => {
@@ -87,7 +87,7 @@ function createElementsFromArray(items, container = shoppingListEl) {
     items.forEach((item) => {
       // Create a new DOM element for the item
       const shoppingListItemEl = document.createElement("li");
-      shoppingListItemEl.classList.add("shopping-list-item");
+      shoppingListItemEl.classList.add("list-group-item");
 
       // Set the content of the element
       shoppingListItemEl.textContent = item;
@@ -98,12 +98,19 @@ function createElementsFromArray(items, container = shoppingListEl) {
       // Create two button elements, 'Mark Purchased' and 'Mark Unpurchased'
       const markPurchasedBtn = document.createElement("button");
       markPurchasedBtn.textContent = "Mark Purchased";
-      markPurchasedBtn.classList.add("mark-purchased");
+      markPurchasedBtn.dataset.script = "mark-purchased";
+      markPurchasedBtn.classList.add("btn", "btn-success", "ms-4");
       shoppingListItemEl.appendChild(markPurchasedBtn);
 
       const markUnpurchasedBtn = document.createElement("button");
       markUnpurchasedBtn.textContent = "Mark Unpurchased";
-      markUnpurchasedBtn.classList.add("hidden", "mark-unpurchased");
+      markUnpurchasedBtn.dataset.script = "mark-unpurchased";
+      markUnpurchasedBtn.classList.add(
+        "d-none",
+        "btn",
+        "btn-secondary",
+        "ms-4"
+      );
       shoppingListItemEl.appendChild(markUnpurchasedBtn);
     });
 
@@ -116,21 +123,22 @@ function createElementsFromArray(items, container = shoppingListEl) {
 shoppingListEl.addEventListener("click", (event) => {
   // Check if the clicked item is the button
   // with a class of 'mark-purchased'
-  if (event.target.matches(".mark-purchased")) {
+  if (event.target.matches('[data-script="mark-purchased"]')) {
     // Handle the click event for the child element.
     // Get a reference to the shopping list item element.
     const shoppingListItemEl = event.target.parentElement;
     // Set the dataset property purchased to true.
     shoppingListItemEl.dataset.purchased = true;
     // Hide the button with a class of 'mark-purchased'.
-    event.target.classList.add("hidden");
+    event.target.classList.add("d-none");
     // Show the button with a class of 'mark-unpurchased'.
     // Get a reference to the button.
     // Constrain the search,
     // to the current shopping list item element.
-    const markUnpurchased =
-      shoppingListItemEl.querySelector(".mark-unpurchased");
-    markUnpurchased.classList.remove("hidden");
+    const markUnpurchased = shoppingListItemEl.querySelector(
+      '[data-script="mark-unpurchased"]'
+    );
+    markUnpurchased.classList.remove("d-none");
   }
 });
 
@@ -138,19 +146,21 @@ shoppingListEl.addEventListener("click", (event) => {
 shoppingListEl.addEventListener("click", (event) => {
   // Check if the clicked item is the button,
   // with a class of 'mark-unpurchased'
-  if (event.target.matches(".mark-unpurchased")) {
+  if (event.target.matches('[data-script="mark-unpurchased"]')) {
     // Handle the click event for the child element.
     // Get a reference to the shopping list item element.
     const shoppingListItemEl = event.target.parentElement;
     // Set the dataset property purchased to false.
     shoppingListItemEl.dataset.purchased = false;
     // Hide the button with a class 'mark-unpurchased'
-    event.target.classList.add("hidden");
+    event.target.classList.add("d-none");
     // Show the button with a class of 'mark-purchased'
     // Get a reference to the button.
     // Constrain the search,
     // to the current shopping list item element.
-    const markPurchased = shoppingListItemEl.querySelector(".mark-purchased");
-    markPurchased.classList.remove("hidden");
+    const markPurchased = shoppingListItemEl.querySelector(
+      '[data-script="mark-purchased"]'
+    );
+    markPurchased.classList.remove("d-none");
   }
 });
